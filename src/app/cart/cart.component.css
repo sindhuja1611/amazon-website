@@ -13,10 +13,12 @@
     width: 250px;
     margin: 20px 0px;
 }
-
-h4,
-h6 {
+.hh{
     font-weight: 400;
+    font-size: medium;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(36, 23, 223);
+    
 }
 
 .center {
@@ -25,6 +27,7 @@ h6 {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+
 }
 
 .card-table {
@@ -40,9 +43,17 @@ h6 {
 }
 
 .center .btn {
+
+    color: rgb(28, 28, 169);
     font-size: 14px !important;
-    margin-top: 20px !important;
-    font-weight: 400;
-    padding: 12px 72px;
-    border-radius: 3px !important;
+    margin-top: 30px !important;
+    font-weight: 1000;
+    padding: 10px 80px;
+    border-radius: 2px !important;
+}
+.container{
+    background-color: rgb(29, 219, 219);
+}
+.card{
+    background-color: rgba(249, 224, 255, 0.931);
 }
