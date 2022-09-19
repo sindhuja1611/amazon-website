@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { CartService } from 'src/app/service/cart.service';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -7,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  public products : any = [];
+  public grandTotal !: number;
+  public Discount !: number;
+  constructor(private cartService : CartService) { }
 
   ngOnInit(): void {
-    
+    this.cartService.getProducts()
+    .subscribe(res=>{
+      this.products = res;
+      this.grandTotal = this.cartService.getTotalPrice();
+    })
   }
+  dis(){
+     this.Discount=this.grandTotal-5;
+     return this.Discount;
+  }   
 
 }

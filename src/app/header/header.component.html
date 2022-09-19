@@ -2,7 +2,7 @@
 
 <header>
     
-    <div class="navbar navbar-dark bg-danger shadow-sm">
+    <div id="navbar" class="nav navbar-dark bg-danger shadow-sm back fixed-top ">
         <div class="navbar-brand align-item-center d-flex">
             <i style="font-size: 40px;" class="fas fa-shipping-fast">
                 Amazon
@@ -17,16 +17,17 @@
         </div>
         <ng-container *ngIf="true">
            
-        <button  class="btn btn-primary"  routerLink="/cart">
+        <button  class="btn btn-info"  routerLink="/cart">
             <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
+            
             <div style="font-size: 10px;" class="badge bg-danger">{{totalItem}}</div>
         </button>
     
     </ng-container>
     </div>
 </header>
-
-
+<br><br>
+<br><br>
 <div class="card-top container-fluid">
     <div class="container d-flex">
         <div class="item">
@@ -192,5 +193,6 @@
 
 <app-products></app-products>
 
-   
+
+
 

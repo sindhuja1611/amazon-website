@@ -8,6 +8,8 @@ import { ProductsComponent } from './products/products.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './cart/cart.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DescriptionComponent } from './description/description.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { NavigationComponent } from './navigation/navigation.component';
     HeaderComponent,
     ProductsComponent,
     CartComponent,
-    NavigationComponent
+    NavigationComponent,
+    DescriptionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
