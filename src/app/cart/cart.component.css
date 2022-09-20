@@ -57,3 +57,7 @@
 .card{
     background-color: rgba(249, 224, 255, 0.931);
 }
+.qty{
+    width:4rem;
+    text-align: center;
+}

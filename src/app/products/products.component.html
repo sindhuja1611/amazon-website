@@ -8,7 +8,7 @@
         <ng-container *ngFor="let item of productList">
             <div class="card col-md-3">
            
-                <img src="{{item.image}}" alt="" (click)="addtocart(item)" routerLink="/description">
+                <img src="{{item.image}}" alt="" (click)="add(item)" routerLink="/description">
          
               
                 <h5 >{{item.title}}</h5>

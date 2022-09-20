@@ -28,9 +28,13 @@ export class ProductsComponent implements OnInit {
     this.cartService.addtoCart(item);
     
   }
+
   add(item: any){
     this.descriptionService.add(item);
-    
+
+  }
+  empty(){
+    this.descriptionService.removeAll();
   }
 
 }

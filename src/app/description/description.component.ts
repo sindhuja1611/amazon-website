@@ -7,21 +7,30 @@ import { DescriptionService } from 'src/app/service/description.service';
   styleUrls: ['./description.component.css']
 })
 export class DescriptionComponent implements OnInit {
+    
 
   public products : any = [];
 
-  constructor(private cartService : CartService,private descriptionService : DescriptionService) { }
+  constructor(private descriptionService : DescriptionService,private cartService : CartService) { 
+  
+  }
 
   ngOnInit(): void {
-    this.cartService.getProducts()
+    this.descriptionService.getProducts()
     .subscribe(res=>{
       this.products = res;
       console.log(this.products);
     
     })
   }
+  empty(){
+    this.descriptionService.removeAll();
+  }
 
-
+    addtocart(item: any){
+    this.cartService.addtoCart(item);
+    
+  }
 }
 
   

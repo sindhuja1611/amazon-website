@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="py-3 text-center">
+    <img class="d-block mx-auto mb-4" src="../../assets/shop1.jpeg" alt="" width="200" height="72">
+ 
+  </div>
+
+  <table class="table table-responsive" border="5" bordercolor="red"> <tbody>
+    
+<div class="row">
+  <div class="col-md-2 order-md-2 mb-4">
+  </div> 
+  
+    <div class="col-md-4 order-md-2 mb-4">
+      <table class="table table-responsive" border="3" bordercolor="blue">
+      <tbody><p *ngFor="let item of products; let i = index">
+        <img style="width:400px;" src="{{item.image}}" alt="">
+      </p>
+    
+      
+    </tbody></table>
+      </div>
+
+
+      <div class="col-md-3 order-md-2 mb-4">
+      <ng-container *ngIf="products.length !=0">
+        <div class="container">
+            <div class="card-table">
+                <div class="cart-product">
+                    <table class="table table-responsive" border="3" bordercolor="blue">
+                        <thead>
+                            <tr>
+                                
+                                <th>Product Name</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>category</th>
+                                <th>Ratings</th>
+                                <th>Count</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of products">
+                                
+                                <td>{{item.title}}</td>
+                                <td style="width: 25%;" class="pl">{{item.description | slice: 0.80}}</td>
+                                <th style="width: 12%;">${{item.price}}</th>
+                                <th style="width: 12%;">{{item.category}}</th>
+                                <td style="width: 12%;">${{item.rating.rate}}</td>
+                                <td style="width: 12%;">${{item.rating.count}}</td>
+                                
+                            </tr>
+                           <button class="btn btn-success" routerLink="/header" (click)="empty()">Goback</button>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+  </div>
+
+
+ 
+   
+</div>
+</tbody>
+  </table>
+
+
+      <!-- <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Product name</h6>
+            <table class="table table-responsive">
+              <thead>
+                  <tr>
+                      <th>Sr.No</th>
+                      <th>Product Name</th>
+                      <th>Product Image</th>
+                      
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Total</th>
+                 
+                  </tr>
+              </thead>
+            <tbody>
+                
+              <tr *ngFor="let item of products; let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{item.title}}</td>
+                  <td><img style="width: 120px;" src="{{item.image}}" alt=""></td>
+                  <th style="width: 12%;">${{item.price}}</th>
+                  <td style="width: 12%;">{{item.quantity}}</td>
+                  <td style="width: 12%;">${{item.total}}</td>
+                 
+              </tr>
+              <tr><button class="btn btn-success" routerLink="/header" (click)="empty()">Goback</button></tr>
+          </tbody>
+      </table>
+          </div>
+         
+        </li>
+      
+      </ul>  
+
+ -->
