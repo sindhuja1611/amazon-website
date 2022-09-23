@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "fir-7dcb5": {
+      "hosting": {
+        "amazon": [
+          "fir-7dcb5"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "fir-7dcb5"
+  }
+}

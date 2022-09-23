@@ -17,7 +17,12 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
-
+import { UserLoginComponent } from './user-login/user-login.component';
+import { RegisterComponent } from './register/register.component';
+import {AuthService} from 'src/app/service/auth.service';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +30,10 @@ import { environment } from '../environments/environment';
     ProductsComponent,
     CartComponent,
     NavigationComponent,
-    DescriptionComponent
+    
+    DescriptionComponent,
+    UserLoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -36,9 +44,13 @@ import { environment } from '../environments/environment';
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }

@@ -21,16 +21,40 @@
                             <td>{{item.title}}</td>
                             <td><img style="width: 120px;" src="{{item.image}}" alt=""></td>
                             <td style="width: 25%;">{{item.description}}</td>
-                            <th style="width: 12%;">${{item.price}}</th>
+                             <th style="width: 12%;">${{item.price}}</th> 
+                             <td> 
+                                
+                                <button class="btn btn-info btn-sm" (click)="increment(item)"><i class="fas fa-plus"></i></button>  <strong> {{item.quantity}} </strong>  <button class="btn btn-info btn-sm" (click)="decrement(item)"><i class="fas fa-minus"></i></button>
+                                
+                               </td>  
+                             <th style="width: 12%;" id="ss">${{item.price * item.quantity}}</th> 
+                          
+
+                        
+                            <!-- <td> 
+                                <input type="text" (change)="changeFnc($event)" 
+                                required>
+                                
                            
-                           <!-- <td> 
-                                <input type="number" id="input" [(ngModel)]="x" 
-                                min="0" max="5" [value]="item.quantity" required>
-                                 <input type="number" class="qty" id="quanty" [value]="item.quantity" blur="validateInput($event,i)"> 
+                            </td>
+                           
+                             <td style="width: 12%;">${{ss}}</td>   -->
+
+                            <!-- <td> 
+                                
+                                <input type="text"  ng:model="item.prc" [value]="item.price" ng:required class="form-control">
                            
                             </td> 
+
+                            <td> 
+                                
+                                 
+                                 <input type="number" min="1" ng:model="item.qty" [value]="item.quantity" ng:required class="form-control">
+                            </td> 
+
                            
-                            <td style="width: 12%;">${{x*item.price}}</td> -->
+                           
+                            <td style="width: 12%;">${{item.qty * item.prc}}</td>  -->
                             <td>
                                 <button (click)="removeItem(item)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                             </td>
@@ -38,9 +62,9 @@
                         <tr>
                             <td colspan="4"></td>
                             <td><button (click)="emptycart()" class="btn btn-info">Empty Cart</button></td>
-                            <td><button routerLink="/header" class="btn btn-warning">Shop More</button></td>
+                            <td><button routerLink="/header" class="btn btn-warning">ShopMore</button></td>
                             <td><button class="btn btn-success" routerLink="/navigation">Checkout</button></td>
-                            <td><strong>Grand Total : ${{grandTotal}}</strong></td>
+                            
                         </tr>
                     </tbody>
                 </table>
