@@ -1,0 +1,122 @@
+<header>
+<!--     
+    <div id="navbar" class="nav navbar-dark bg-danger shadow-sm back fixed-top w-100">
+        <div class="navbar-brand">
+            <i style="font-size: 40px;" class="fas fa-shipping-fast">
+                Amazon
+            </i>
+        </div>
+          <div class="me-auto">
+              <button  class="btn btn-warning" (click)="logout()" id="b1"> LogOut</button>
+
+              <button  class="btn btn-info" routerLink="/header" id="b1">Website</button>
+         </div>
+  </div> -->
+
+  <nav class="navbar navbar-dark bg-danger">
+    <div class="container-fluid">
+        <div class="navbar-brand">
+            <i style="font-size: 40px;" class="fas fa-shipping-fast">
+                Amazon
+            </i>
+        </div>
+      <form class="d-flex">
+        <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button> -->
+        <button  class="btn btn-warning me-3" (click)="logout()" id="b1"> LogOut</button>
+        <button  class="btn btn-info" routerLink="/header" id="b1">Website</button>
+      </form>
+    </div>
+  </nav>
+      
+  
+
+</header> 
+
+<!-- <nav class="navbar navbar-light bg-light justify-content-between">
+    <a class="navbar-brand">Navbar</a>
+
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+   
+  </nav> -->
+  
+<br>
+<br>
+<br>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-4 mt-5">
+            <div class="card border-0 shadow p-3">
+                <div class="form-floating mb-3 tetx-center">
+                    <h5 class="text-center text-warning">Add Product</h5>
+                </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="firstName" name="firstname" [(ngModel)]="pid">
+                        <label for="firstname">Product Id:</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="title">
+                        <label for="lastName">Product Name</label>
+                    </div>
+                     <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="firstame" name="firstname" [(ngModel)]="image">
+                        <label for="firstame">Product URL:</label>
+                    </div> 
+                   
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="category">
+                        <label for="email">Product Description</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="mobile" name="mobile" [(ngModel)]="price">
+                        <label for="mobile">Price</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="mobile" name="mobile" [(ngModel)]="quantity">
+                        <label for="mobile">Quantity</label>
+                    </div>
+                    <button type="button" class="btn btn-outline-success" (click)="addProduct()">Add Product</button>
+            </div>
+        </div>
+        <div class="col-md-8 mt-2">
+            <h5 class="text-danger"> Product List</h5>
+            <div class="card p-3 shadow">
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">Product Id</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Product Image</th>
+                            <th scope="col">Categeory</th>
+                            
+                            <th scope="col">Price</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of productsList">
+                            <td >{{item.pid}}</td>
+                            <td>{{item.title}}</td>
+                            <td><img src={{item.image}}></td>
+                            <td>{{item.category}}</td>
+                           
+                            <td>{{item.price}}</td>
+                      
+                             <td>
+                                <button class="btn btn-outline-danger" (click)="deleteProduct(item)">Delete</button>
+                            </td> 
+                            <td>
+                                <button class="btn btn-outline-warning" routerLink="/update" (click)="update(item)" >Update</button>
+                            </td> 
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

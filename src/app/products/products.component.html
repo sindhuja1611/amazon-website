@@ -5,21 +5,21 @@
         <br>
         <br>
        
-        <ng-container *ngFor="let item of productList">
+        <ng-container *ngFor="let item of productsList">
             <div class="card col-md-3">
            
                 <img src="{{item.image}}" alt="" (click)="add(item)" routerLink="/description">
          
               
-                <h5 >{{item.title}}</h5>
-                <p class="pl">{{item.description}}</p>
-                <p><strong class="str">Price:</strong> ${{item.price}}</p>
-                <p><strong class="str">Rating:</strong> {{item.rating.rate}}</p>
-                <p><strong class="str">Count:</strong> {{item.rating.count}}</p>
+                <p><strong class="str">Product Id: </strong>{{item.pid}}</p>
+                <p><strong class="str">Tile: </strong> {{item.title}}</p>
+                <p><strong class="str">Price: </strong> {{item.price | currency}}</p>
+                <p><strong class="str">category: </strong> {{item.category}}</p>
                 
-                  <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="addtocart(item)">
+                
+                  <button type="button" class="btn btn-success"   (click)="addtocart(item)" >
                     Add To Cart
-                  </button>
+                  
                   
                   <!-- Modal -->
                   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -30,7 +30,7 @@
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                          <h5><i style="color:rgb(233, 29, 199);">Item Successfully Added to Cart...</i></h5>
+                          <h5><i style="color:rgb(15, 8, 14);">Item Successfully Added to Cart...</i></h5>
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-warning" data-bs-dismiss="modal" routerLink="/header">Shop more</button>
@@ -40,7 +40,7 @@
                     </div>
                   </div>
                   
-              
+                </button>
             </div>
         </ng-container>
   

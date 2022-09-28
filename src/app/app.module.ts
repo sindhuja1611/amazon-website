@@ -23,6 +23,9 @@ import {AuthService} from 'src/app/service/auth.service';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { AdminComponent } from './admin/admin.component';
+import { VisitComponent } from './visit/visit.component';
+import { UpdateComponent } from './update/update.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +36,10 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     
     DescriptionComponent,
     UserLoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdminComponent,
+    VisitComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,

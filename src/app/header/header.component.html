@@ -2,7 +2,7 @@
 
 <header>
     
-    <div id="navbar" class="nav navbar-dark bg-danger shadow-sm back fixed-top ">
+    <div id="navbar" class="nav navbar-dark bg-danger  shadow-sm back navbar-collapse fixed-top ">
         <div class="navbar-brand align-item-center d-flex">
             <i style="font-size: 40px;" class="fas fa-shipping-fast">
                 Amazon
@@ -15,15 +15,18 @@
       
 
         </div>
+        <div class="d-flex">
         <ng-container *ngIf="true">
-           
-        <button  class="btn btn-info"  routerLink="/cart">
+        
+        <button  class="btn btn-info ms-5 me-2"  routerLink="/cart" id="b2">
             <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
             
             <div style="font-size: 10px;" class="badge bg-danger">{{totalItem}}</div>
         </button>
-    
+        <button  class="btn btn-warning ms-2" (click)="logout()" id="b1"> LogOut</button>
+  
     </ng-container>
+</div>
     </div>
 </header>
 <br><br>
@@ -32,15 +35,11 @@
     <div class="container d-flex">
         <div class="item">
 
-            <a routerLink="/products">
-            
-                 <img src="https://rukminim1.flixcart.com/flap/128/128/image/f15c02bfeb02d15d.png?q=100" alt=""> 
-                <h6>All products</h6>
-            </a>
+           
         </div>
-        <div class="item">
+        <div class="item1">
             <a >
-                <img src="https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100" alt="">
+                <img src="/assets/el.jpeg" alt="">
                 <h6>Electronics</h6>
             </a>
         </div>

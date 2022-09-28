@@ -1,0 +1,52 @@
+<header>
+    
+    <div id="navbar" class="nav navbar-dark bg-danger shadow-sm back fixed-top ">
+        <div class="navbar-brand align-item-center d-flex">
+            <i style="font-size: 40px;" class="fas fa-shipping-fast">
+                Amazon
+            </i>
+        </div>
+    </div>
+</header>
+<br>
+<br>
+<br>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-4 mt-5">
+            <div class="card border-0 shadow p-3">
+                <div class="form-floating mb-3 tetx-center">
+                    <h5 class="text-center text-warning">Update Product</h5>
+                </div>
+                <div *ngFor="let item of products; let i = index">
+                    <div class="form-floating mb-3">
+                       
+                        <input type="text" class="form-control" id="firstName" name="firstname" value={{item.pid}} >
+                        <label for="firstname">Product Id:</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="lastName" name="lastName" value={{item.title}} >
+                        <label for="lastName">Product Name</label>
+                    </div>
+                     <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="firstame" name="firstname" value={{item.image}}>
+                        <label for="firstame">Product URL:</label>
+                    </div> 
+                   
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="email" name="email" value={{item.category}} >
+                        <label for="email">Product Description</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="mobile" name="mobile" value={{item.price}}>
+                        <label for="mobile">Price</label>
+                    </div>
+                    
+                    <button type="button" class="btn btn-outline-success" (click)="updateDoc(item)">Update Product</button>
+                    <button type="button" class="btn btn-outline-danger" routerLink="/admin">Go Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

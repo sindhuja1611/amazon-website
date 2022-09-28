@@ -30,6 +30,27 @@ export class CartService {
 
   }
 
+  add(product : any){
+    
+    this.cartItemList.push(product);
+    
+    this.productList.next(this.cartItemList);
+    
+ 
+
+  }
+update(product : any){
+    
+    this.cartItemList.push(product);
+    
+    this.productList.next(this.cartItemList);
+    
+   
+
+  }
+
+
+
   getTotalPrice() : number{
     let grandTotal = 0;
     this.cartItemList.map((a:any)=>{
@@ -58,26 +79,9 @@ export class CartService {
     })
     this.productList.next(this.cartItemList);
   }
-  changeItem(product : any){
-
-    let value=0;
-    this.cartItemList.map((a:any)=>{
-      console.log("ss",product.id);
-       console.log("sss",a.id);
-
-      if(product.id === a.id){
-        console.log("ss",a);
-         console.log(((<HTMLInputElement>document.getElementById("ss")).value));
 
 
-
-        //this.cartItemList.value(index,1);
-
-      }
-    })
-    return value;
-
-  }
+  
 
   removeAllCart(){
     this.cartItemList = []

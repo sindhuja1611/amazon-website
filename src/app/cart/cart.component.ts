@@ -14,9 +14,6 @@ export class CartComponent implements OnInit {
   public grandTotal !: number;
   public total !: number;
 
-  public value !: number;
-
-  public x !: number;
 
   constructor(private cartService : CartService) {}
 
@@ -25,18 +22,15 @@ export class CartComponent implements OnInit {
     .subscribe(res=>{
       this.products = res;
         
-      this.grandTotal = this.cartService.getTotalPrice();
-      this.total = this.cartService.getTotal();
+     // this.grandTotal = this.cartService.getTotalPrice();
+      if(this.products) this.getTotal(this.products);
      
     })
   }
   removeItem(item: any){
     this.cartService.removeCartItem(item);
   }
-   changeFn(item : any){
-    this.cartService.changeItem(item);
-  
-  }
+ 
    emptycart(){
     this.cartService.removeAllCart();
   }
@@ -44,15 +38,22 @@ export class CartComponent implements OnInit {
     if(item.quantity!=5){
       item.quantity = item.quantity+1;
     }
-   
+    this.getTotal(this.products);
   }
   decrement(item : any){
     if(item.quantity!=1){
       item.quantity = item.quantity-1;
     }
+    this.getTotal(this.products);
    }
   
-  
+  getTotal(Product:any){
+    let total=0;
+    for(const item of Product)
+    total+=item.price * item.quantity;
+    this.total=total;
+  }
+
 
   }
 

@@ -7,17 +7,23 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { DescriptionComponent } from './description/description.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { RegisterComponent } from './register/register.component';
+import { AdminComponent } from './admin/admin.component';
+import { VisitComponent } from './visit/visit.component';
+import { UpdateComponent } from './update/update.component';
 
 const routes: Routes = [
   {path:'header', component: HeaderComponent},
-  {path:'', redirectTo:'header',pathMatch:'full'},
+  {path:'', redirectTo:'user-login',pathMatch:'full'},
 
   {path:'products', component: ProductsComponent},
   {path:'cart', component: CartComponent},
   {path:'navigation', component: NavigationComponent},
   {path:'description', component: DescriptionComponent},
   {path:'user-login', component: UserLoginComponent},
-  {path:'register', component: RegisterComponent}
+  {path:'register', component: RegisterComponent},
+  {path:'admin', component: AdminComponent},
+  {path:'visit', component: VisitComponent},
+  {path:'update', component: UpdateComponent}
   
 ];
 

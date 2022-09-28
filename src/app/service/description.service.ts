@@ -14,11 +14,11 @@ export class DescriptionService {
   getProducts(){
     return this.productList.asObservable();
   }
+
   setProduct(product : any){
     this.ItemList.push(...product);
     this.productList.next(product);
   }
-
  
 
   add(product : any){
