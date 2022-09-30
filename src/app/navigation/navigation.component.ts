@@ -14,6 +14,8 @@ export class NavigationComponent implements OnInit {
   public Discount !: number;
   constructor(private cartService : CartService,private data: DataService) { }
 
+
+  
   ngOnInit(): void {
     this.cartService.getProducts()
     .subscribe(res=>{

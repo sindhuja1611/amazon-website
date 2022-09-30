@@ -61,3 +61,10 @@
     width:4rem;
     text-align: center;
 }
+
+.card-title{
+    color: darkred;
+}
+.card-tile{
+    color: rgb(8, 8, 8);
+}

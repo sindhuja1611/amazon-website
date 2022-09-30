@@ -13,7 +13,11 @@
     margin: 0px 40px;
     text-align: center;
 }
-
+.itemm {
+    align-items: center;
+    margin: 0px 40px;
+    text-align: center;
+}
 
 
 .item a:hover {

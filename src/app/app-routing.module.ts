@@ -10,11 +10,13 @@ import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin/admin.component';
 import { VisitComponent } from './visit/visit.component';
 import { UpdateComponent } from './update/update.component';
+import { AuthGuard } from './auth.guard';
+import { RoleGuard } from './role.guard';
 
 const routes: Routes = [
-  {path:'header', component: HeaderComponent},
+  
   {path:'', redirectTo:'user-login',pathMatch:'full'},
-
+  {path:'header', component: HeaderComponent,canActivate:[RoleGuard]},
   {path:'products', component: ProductsComponent},
   {path:'cart', component: CartComponent},
   {path:'navigation', component: NavigationComponent},

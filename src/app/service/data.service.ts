@@ -35,6 +35,12 @@ export class DataService {
     
    
   }
+
+  public filterCategory : any  
+  productsList: Product[] = [];
+  public productList : any ;
+
+
     
     
 }

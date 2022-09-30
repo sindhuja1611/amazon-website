@@ -1,5 +1,4 @@
 
-
 <header>
     
     <div id="navbar" class="nav navbar-dark bg-danger  shadow-sm back navbar-collapse fixed-top ">
@@ -7,191 +6,48 @@
             <i style="font-size: 40px;" class="fas fa-shipping-fast">
                 Amazon
             </i>
-            <strong style="font-size: 30px;"></strong>
-            <div class="form-group">
-                <input type="text" class="form-control"  placeholder="search products">
+            <div class="navbar-brand align-item-center d-flex">
+            <strong style="font-size: 30px;text-align:center;color: rgb(228, 37, 11);">Welcome Admin!!</strong>
+           
             </div>
-            <span class="fas fa-search search-icon"></span>
-      
-
+            <div class="navbar-brand align-item-center d-flex">
+                <strong style="font-size: 20px;color: rgb(228, 37, 11);">Welcome Admin!!</strong>
+               
+                </div>
+                <div class="navbar-brand align-item-center d-flex">
+                    <strong style="font-size: 30px;text-align:center;color: rgb(228, 37, 11);">Welcome Admin!!</strong>
+                   
+                    </div>
+  
         </div>
         <div class="d-flex">
         <ng-container *ngIf="true">
-        
-        <button  class="btn btn-info ms-5 me-2"  routerLink="/cart" id="b2">
-            <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
-            
-            <div style="font-size: 10px;" class="badge bg-danger">{{totalItem}}</div>
-        </button>
-        <button  class="btn btn-warning ms-2" (click)="logout()" id="b1"> LogOut</button>
+
+        <button  class="btn btn-info me-2" routerLink="/admin" id="b1"> Admin</button>
+  
+  
+  
+        <button  class="btn btn-success me-2" routerLink="/admin" id="b1"> Website</button>
+
+
+        <button  class="btn btn-warning me-2" (click)="logout()" id="b1"> LogOut</button>
   
     </ng-container>
-</div>
+  </div>
     </div>
-</header>
+  </header>
 <br><br>
 <br><br>
-<div class="card-top container-fluid">
-    <div class="container d-flex">
-        <div class="item">
 
+
+
+<div>
+  
+        <div class="itemm">
+
+<img src="/assets/ad.webp" width="100%" height="100%">
            
         </div>
-        <div class="item1">
-            <a >
-                <img src="/assets/el.jpeg" alt="">
-                <h6>Electronics</h6>
-            </a>
-        </div>
-        <div class="item">
-            <a >
-                <img src="https://rukminim1.flixcart.com/flap/128/128/image/82b3ca5fb2301045.png?q=100" alt="">
-                <h6>Fashion</h6>
-            </a>
-        </div>
-        <div class="item1">
-            <a >
-                <img src="/assets/jewel.jpeg" alt="">
-                <h6>Jewllery</h6>
-            </a>
-        </div>
-        <div class="item">
-            <a >
-                <img src="https://cdn3.vectorstock.com/i/1000x1000/26/62/fashion-accessories-set-9-vector-15992662.jpg" alt="">
-                <h6>Accessories</h6>
-            </a>
-        </div>
-        <div class="item">
-            <a >
-                <img src="/assets/gift.jpeg" alt="">
-                <h6>Gifts&Toys</h6>
-            </a>
-        </div>
-        <div class="item">
-            <a >
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXBQ2ckKDDoFgKqkyPxSy7rs6_Fxvftw2FTg&usqp=CAU" alt="">
-                <h6>Beauty kits</h6>
-            </a>
-        </div>
-        <div class="item1">
-            <a >
-                <img src="/assets/sports.jpeg" alt="">
-                <h6>Sportss</h6>
-            </a>
-        </div>
-    </div>
 </div>
-<div class="row">
-<div class="col-sm-6 ">
-   
-    <div class="container-lg my-3">
-        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-            <!-- Carousel indicators -->
-            <ol class="carousel-indicators">
-                <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
-                <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
-                <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
-            </ol>
-            
-            <!-- Wrapper for carousel items -->
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="/assets/flip3.jpeg" class="d-block w-100" alt="Slide 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="/assets/flip1.jpeg" class="d-block w-100" alt="Slide 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="/assets/flip2.jpeg" class="d-block w-100" alt="Slide 3">
-                </div>
-            </div>
-    
-            <!-- Carousel controls -->
-            <a class="carousel-control-prev" href="#myCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#myCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a>
-        </div>
-    </div>
-
-</div>
-
-
-<div class="col-sm-6 ">
-   
-    <div class="container-lg my-3">
-        <div id="Carousel" class="carousel slide" data-bs-ride="carousel">
-            <!-- Carousel indicators -->
-            <ol class="carousel-indicators">
-                <li data-bs-target="#Carousel" data-bs-slide-to="0" class="active"></li>
-                <li data-bs-target="#Carousel" data-bs-slide-to="1"></li>
-                <li data-bs-target="#Carousel" data-bs-slide-to="2"></li>
-            </ol>
-            
-            <!-- Wrapper for carousel items -->
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="/assets/flip6.jpeg" class="d-block w-100" alt="Slide 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="/assets/flip5.jpeg" class="d-block w-100" alt="Slide 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="/assets/flip4.jpeg" class="d-block w-100" alt="Slide 3">
-                </div>
-            </div>
-    
-            <!-- Carousel controls -->
-            <a class="carousel-control-prev" href="#Carousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#Carousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a>
-        </div>
-    </div>
-
-</div>
-
-</div>
-
-<div class="card-top container-fluid">
-  <div class="container d-flex">
-    <div class="item5">
- 
-      <img src="/assets/s1.webp" alt="">
-    
-</div>
-
-    <div class="item5">
- 
-      <img src="/assets/ss.webp" alt="">
-    
-</div>
-
-<div class="item5">
- 
-      <img src="/assets/sales.webp" alt="">
-    
-</div>
-
-
-
-<div class="item5">
- 
-  <img src="/assets/sale1.webp" alt="">
-
-</div>
-
-</div>
-</div>
-
-
-
-<app-products></app-products>
-
-
 
 

@@ -24,17 +24,19 @@ export class UserLoginComponent implements OnInit {
     alert("welcome Admin"); 
     this.email="admin@10decoders.in";
     this.password="admin10d"
+    localStorage.setItem('user','admin')
     this.auth.login(this.email,this.password);
 
-    this.router.navigate(['admin']);
+    this.router.navigate(['header']);
 
    }
    else{
     this.fireauth.signInWithEmailAndPassword(this.email,this.password).then( res => {
       this.isLoggedIn=true
+      console.log(res.user);
         localStorage.setItem('user',JSON.stringify(res.user))
     alert("login successful");
-    this.router.navigate(['/header']);  
+    this.router.navigate(['/products']);  
        
 
     }, err => {

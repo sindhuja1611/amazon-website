@@ -4,6 +4,8 @@ import { DataService } from 'src/app/service/data.service';
 import { Product } from 'src/app/model/product';
 import { CartService } from 'src/app/service/cart.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { DescriptionService } from 'src/app/service/description.service';
+import { Router } from '@angular/router';
 import {map} from 'rxjs/operators';
 @Component({
   selector: 'app-update',
@@ -11,6 +13,9 @@ import {map} from 'rxjs/operators';
   styleUrls: ['./update.component.css']
 })
 export class UpdateComponent implements OnInit {
+
+  email : string='';
+  password : string = '';
   productsList: Product[] = [];
   productObj: Product = {
     id:'',
@@ -34,7 +39,7 @@ export class UpdateComponent implements OnInit {
   price=0;
   quantity=0;
 
-  constructor(private auth: AuthService, private data: DataService,private cartService : CartService,private afs : AngularFirestore) { }
+  constructor(private auth: AuthService, private data: DataService,private cartService : CartService,private router : Router,private afs : AngularFirestore,private descriptionService : DescriptionService) { }
 
 public products : any = [];
 
@@ -45,6 +50,12 @@ public products : any = [];
         
       
     })
+    if((this.email=="admin@10decoders.in")&&(this.password=="admin10d")){
+      alert("welcome Admin"); 
+      this.email="admin@10decoders.in";
+      this.password="admin10d"
+      localStorage.setItem('user','update')
+     }
   }
 
 
@@ -91,13 +102,7 @@ public products : any = [];
 
 //  }
  updateDoc(item:Product) {
-  this.productObj.id = "";
-  this.productObj.pid = this.pid;
-  this.productObj.title = this.title;
-  this.productObj.image = this.image;
-  this.productObj.category = this.category;
-  this.productObj.price = this.price;
-console.log(this.productObj);
+
 
   this.data.updateProduct(item);
 
@@ -105,6 +110,10 @@ console.log(this.productObj);
 
   alert("checking done");
 
+    }
+
+    empty(){
+      this.descriptionService.removeAll();
     }
 
   deleteProduct(item: Product) {

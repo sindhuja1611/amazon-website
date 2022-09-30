@@ -26,6 +26,9 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AdminComponent } from './admin/admin.component';
 import { VisitComponent } from './visit/visit.component';
 import { UpdateComponent } from './update/update.component';
+import { FilterPipe } from './filter.pipe';
+import { FormGroup, FormBuilder, Validators, FormControl, NgForm } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +42,8 @@ import { UpdateComponent } from './update/update.component';
     RegisterComponent,
     AdminComponent,
     VisitComponent,
-    UpdateComponent
+    UpdateComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

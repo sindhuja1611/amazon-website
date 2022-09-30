@@ -49,35 +49,22 @@ export class AuthService {
     })
   }
 
-  // forgot password
-  forgotPassword(email : string) {
-      this.fireauth.sendPasswordResetEmail(email).then(() => {
-        this.router.navigate(['/varify-email']);
-      }, err => {
-        alert('Something went wrong');
-      })
-  }
-
-  // email varification
-  sendEmailForVarification(user : any) {
-    console.log(user);
-    user.sendEmailVerification().then((res : any) => {
-      this.router.navigate(['/varify-email']);
-    }, (err : any) => {
-      alert('Something went wrong. Not able to send mail to your email.')
-    })
-  }
+  
 
   //sign in with google
   googleSignIn() {
     return this.fireauth.signInWithPopup(new GoogleAuthProvider).then(res => {
 
-      this.router.navigate(['/header']);
+      this.router.navigate(['/products']);
       localStorage.setItem('token',JSON.stringify(res.user?.uid));
 
     }, err => {
       alert(err.message);
     })
+  }
+
+  IsLoggedIn(){
+    return !!localStorage.getItem('token');
   }
 
 }
