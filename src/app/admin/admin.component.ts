@@ -90,6 +90,7 @@ export class AdminComponent implements OnInit {
 
  
    update(item: any){
+    
    this.cartService.update(item);
    alert("Do u want to update?");
    

@@ -22,28 +22,28 @@
                 <div *ngFor="let item of products; let i = index">
                     <div class="form-floating mb-3">
                        
-                        <input type="text" class="form-control" id="firstName" name="firstname" value={{item.pid}} >
-                        <label for="firstname">Product Id:</label>
+                        <input type="text" class="form-control" id="pid"  value={{item.pid}} >
+                        <label for="pid">Product Id:</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="lastName" name="lastName" value={{item.title}} >
-                        <label for="lastName">Product Name</label>
+                        <input type="text" class="form-control" id="title"  value={{item.title}} [(ngModel)]="title">
+                        <label for="title">Product Name</label>
                     </div>
                      <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="firstame" name="firstname" value={{item.image}}>
-                        <label for="firstame">Product URL:</label>
+                        <input type="text" class="form-control" id="image"  value={{item.image}} >
+                        <label for="image">Product URL:</label>
                     </div> 
                    
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="email" name="email" value={{item.category}} >
-                        <label for="email">Product Description</label>
+                        <input type="email" class="form-control" id="cat" value={{item.category}} >
+                        <label for="cat">Product Description</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="mobile" name="mobile" value={{item.price}}>
-                        <label for="mobile">Price</label>
+                        <input type="text" class="form-control" id="price" value={{item.price}} [(ngModel)]="price">
+                        <label for="price">Price</label>
                     </div>
                     
-                    <button type="button" class="btn btn-outline-success" (click)="updateDoc(item)">Update Product</button>
+                    <button type="button" class="btn btn-outline-success" (click)="updateDoc()">Update Product</button>
                     <button type="button" class="btn btn-outline-danger" routerLink="/admin" (click)="empty()">Go Back</button>
                 </div>
             </div>

@@ -6,7 +6,9 @@ import { CartService } from 'src/app/service/cart.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { DescriptionService } from 'src/app/service/description.service';
 import { Router } from '@angular/router';
-import {map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+
+
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
@@ -14,48 +16,56 @@ import {map} from 'rxjs/operators';
 })
 export class UpdateComponent implements OnInit {
 
-  email : string='';
-  password : string = '';
+
+
+
+
+  email: string = '';
+  password: string = '';
   productsList: Product[] = [];
   productObj: Product = {
-    id:'',
+    id: '',
     pid: '',
     title: '',
-   
-    image:'',
+
+    image: '',
     category: '',
-   
-    price:0,
-    quantity:0,
-    
+
+    price: 0,
+    quantity: 0,
+
   };
   id: string = '';
   pid: string = '';
   title: string = '';
-  image:string='';
+  image: string = '';
   category: string = '';
-  
- 
-  price=0;
-  quantity=0;
 
-  constructor(private auth: AuthService, private data: DataService,private cartService : CartService,private router : Router,private afs : AngularFirestore,private descriptionService : DescriptionService) { }
 
-public products : any = [];
+  price = 0;
+  quantity = 0;
+
+  constructor(private auth: AuthService, private data: DataService, private cartService: CartService, private router: Router, private afs: AngularFirestore, private descriptionService: DescriptionService) { }
+
+  public products: any = [];
 
   ngOnInit(): void {
     this.cartService.getProducts()
-    .subscribe(res=>{
-      this.products = res;
-        
-      
-    })
-    if((this.email=="admin@10decoders.in")&&(this.password=="admin10d")){
-      alert("welcome Admin"); 
-      this.email="admin@10decoders.in";
-      this.password="admin10d"
-      localStorage.setItem('user','update')
-     }
+      .subscribe(res => {
+        this.products = res;
+
+
+      })
+    if ((this.email == "admin@10decoders.in") && (this.password == "admin10d")) {
+      alert("welcome Admin");
+      this.email = "admin@10decoders.in";
+      this.password = "admin10d"
+      localStorage.setItem('user', 'update')
+    }
+
+
+
+
   }
 
 
@@ -63,18 +73,18 @@ public products : any = [];
   //   this.auth.logout();
   // }
 
- 
-   resetForm() {
+
+  resetForm() {
     this.id = '';
     this.pid = '';
     this.title = '';
     this.image = '';
-   
+
     this.category = '';
-   
-    this.price=0;
-    this.quantity=0;
-   }
+
+    this.price = 0;
+    this.quantity = 0;
+  }
 
   addProduct() {
     // if (this.first_name == '' || this.last_name == '' || this.mobile == '' || this.email == '') {
@@ -90,34 +100,40 @@ public products : any = [];
     this.productObj.price = this.price;
     this.productObj.quantity = this.quantity;
     this.data.addProduct(this.productObj);
-    
+
     this.resetForm();
 
   }
-//  updateProduct(item:Product){
-  
-//   this.addProduct();
-//   this.data.deleteProduct(item);
+  //  updateProduct(item:Product){
+
+  //   this.addProduct();
+  //   this.data.deleteProduct(item);
 
 
-//  }
- updateDoc(item:Product) {
+  //  }
+  updateDoc() {
 
-
-  this.data.updateProduct(item);
-
-  this.resetForm();
-
-  alert("checking done");
-
+    console.log(this);
+    id:String;
+    this.id=this.products[0].id;
+    let data={ 
+      "title":this.title,
+       
     }
+    this.data.updateProduct(data,this.id);
 
-    empty(){
-      this.descriptionService.removeAll();
-    }
+    // this.resetForm();
+
+
+
+  }
+
+  empty() {
+    this.descriptionService.removeAll();
+  }
 
   deleteProduct(item: Product) {
-    if (window.confirm('Are you sure you want to delete '+ ' ?')) {
+    if (window.confirm('Are you sure you want to delete ' + ' ?')) {
       this.data.deleteProduct(item);
     }
   }

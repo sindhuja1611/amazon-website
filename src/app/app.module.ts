@@ -29,6 +29,7 @@ import { UpdateComponent } from './update/update.component';
 import { FilterPipe } from './filter.pipe';
 import { FormGroup, FormBuilder, Validators, FormControl, NgForm } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +56,7 @@ import { FormGroup, FormBuilder, Validators, FormControl, NgForm } from '@angula
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())

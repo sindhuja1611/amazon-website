@@ -96,8 +96,32 @@ export class DescriptionComponent implements OnInit {
 
       addtocart(item: any){
         this.emptycart();
-        this.cartService.addtoCart(item);
-   
+        if (this.cartService.cartItemList.length === 0) {
+ 
+
+          this.cartService.addtoCart(item);
+          alert("Item Successfully Added to cart")
+    
+        }
+        else {
+     
+    
+          const existsID = this.cartService.cartItemList.find((value:any) => (value.id === item.id))
+           if(existsID)
+          
+           {
+    
+            alert("Product Already Added.. Go To Cart...");
+    
+           }
+    else {
+      this.cartService.addtoCart(item);
+      alert("Item Successfully Added to cart");
+    }
+       
+    
+        }
+     
       }
 
   }

@@ -1,7 +1,9 @@
+import { isNgTemplate } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-
+import { Title } from '@angular/platform-browser';
+import { getFirestore, doc, updateDoc } from "firebase/firestore";
 import { Product } from '../model/product';
 
 @Injectable({
@@ -26,14 +28,27 @@ export class DataService {
   }
 
 
-  updateProduct(item: Product) {
+  updateProduct(item: any,id:any) {
     // this.deleteStudent(student);
-     
-    this.afs.doc('/Students/'+item.id).update(item);
-    console.log(item);
+  
+ console.log("Inbound data",item);
+
+// Your Firebase SDK Initialization code here
+
+const db = getFirestore(); // initialize Firestore
+
+const docRef = doc(db,"Students",id);
+
+
+
+updateDoc(docRef, item)
+.then(docRef => {
+    console.log("A New Document Field has been added to an existing document");
     alert("updated");
-    
-   
+})
+.catch(error => {
+    console.log(error);
+})
   }
 
   public filterCategory : any  
