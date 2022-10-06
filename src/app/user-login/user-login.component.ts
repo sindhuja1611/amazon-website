@@ -9,56 +9,82 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 })
 export class UserLoginComponent implements OnInit {
 
-  email : string='';
-  password : string = '';
-  isLoggedIn=false
+  email: string = '';
+  password: string = '';
+  isLoggedIn = false
 
-  constructor(private auth : AuthService,private fireauth : AngularFireAuth,private router : Router) { }
+  public usr !: any;
+
+
+  constructor(private auth: AuthService, private fireauth: AngularFireAuth, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   login() {
 
-   if((this.email=="admin@10decoders.in")&&(this.password=="admin10d")){
-    alert("welcome Admin"); 
-    this.email="admin@10decoders.in";
-    this.password="admin10d"
-    localStorage.setItem('user','admin')
-    this.auth.login(this.email,this.password);
+    var letters = /^[A-Za-z]+$/;
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (this.email == '') {
+      alert('Please enter email');
+      return;
+    }
 
-    this.router.navigate(['header']);
+   
+    else if (this.email == '') {
+      alert('Please enter your user email id');
+    }
+    else if (!filter.test(this.email)) {
+      alert('Invalid email');
+      this.email='';
+    }
+    else if (this.password == '') {
+      alert('Please enter password');
+      return;
+    }
 
-   }
-   else{
-    this.fireauth.signInWithEmailAndPassword(this.email,this.password).then( res => {
-      this.isLoggedIn=true
-      console.log(res.user);
-        localStorage.setItem('user',JSON.stringify(res.user))
-    alert("login successful");
-    this.router.navigate(['/products']);  
-       
+    else if ((this.email == "admin@10decoders.in") && (this.password == "admin10d")) {
+      alert("welcome Admin");
+      this.email = "admin@10decoders.in";
+      this.password = "admin10d"
+      localStorage.setItem('user', 'admin')
+      this.auth.login(this.email, this.password);
 
-    }, err => {
+      this.router.navigate(['header']);
 
-        alert("To Login Kindly Register..");
-        this.router.navigate(['/user-login']);
-    })
+    }
 
+    else {
+      this.fireauth.signInWithEmailAndPassword(this.email, this.password).then(res => {
+        this.isLoggedIn = true
+
+
+        this.usr = res.user?.email;
+        console.log(this.usr);
+
+        localStorage.setItem('user', JSON.stringify(res.user))
+        alert("login successful");
+        this.router.navigate(['/products']);
+
+
+
+
+      })
+
+
+    }
   }
-}
 
   signInWithGoogle() {
     this.auth.googleSignIn();
   }
- 
 
 
-  
+
+
 }
 
 
 
 
 
-  

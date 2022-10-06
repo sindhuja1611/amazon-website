@@ -10,8 +10,10 @@ import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin/admin.component';
 import { VisitComponent } from './visit/visit.component';
 import { UpdateComponent } from './update/update.component';
-import { AuthGuard } from './auth.guard';
-import { RoleGuard } from './role.guard';
+
+import { RoleGuard } from './helpers/role.guard';
+
+
 
 const routes: Routes = [
   
@@ -24,13 +26,19 @@ const routes: Routes = [
   {path:'user-login', component: UserLoginComponent},
   {path:'register', component: RegisterComponent},
   {path:'admin', component: AdminComponent},
+
   {path:'visit', component: VisitComponent},
-  {path:'update', component: UpdateComponent}
-  
+  {path:'update', component: UpdateComponent},
+  { path:'superadmin',loadChildren:()=>import('./superadmin/superadmin.module').then(mod=>mod.SuperadminModule)}  
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+
+  
+
+
+}

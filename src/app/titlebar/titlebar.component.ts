@@ -1,5 +1,3 @@
-
-
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/model/product';
 import { AuthService } from 'src/app/service/auth.service';
@@ -8,16 +6,15 @@ import { CartService } from 'src/app/service/cart.service';
 import { DescriptionService } from 'src/app/service/description.service';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router } from '@angular/router';
 
 
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: 'app-titlebar',
+  templateUrl: './titlebar.component.html',
+  styleUrls: ['./titlebar.component.css']
 })
-export class ProductsComponent implements OnInit {
+export class TitlebarComponent implements OnInit {
 
   email: string = '';
   password: string = '';
@@ -47,14 +44,11 @@ export class ProductsComponent implements OnInit {
   price = 0;
   quantity = 0;
 
-  constructor(private router:Router,private auth: AuthService, private fireauth: AngularFireAuth, private data: DataService, private cartService: CartService, private descriptionService: DescriptionService) { 
+  constructor(private auth: AuthService, private fireauth: AngularFireAuth, private data: DataService, private cartService: CartService, private descriptionService: DescriptionService) { }
 
-    let currentUser = JSON.parse(localStorage.getItem("user") || '');
-    console.log("user details", currentUser.email);
 
-    this.user = currentUser.email;
-   this.router.navigate(['/products']);
-  }
+
+
 
   ngOnInit(): void {
 
@@ -68,6 +62,10 @@ export class ProductsComponent implements OnInit {
 
       })
 
+    let currentUser = JSON.parse(localStorage.getItem("user") || '');
+    console.log("user details", currentUser.email);
+
+    this.user = currentUser.email;
 
     this.getAllProducts();
 
@@ -118,11 +116,12 @@ export class ProductsComponent implements OnInit {
 
 
 
-
+  // register() {
+  //   this.auth.logout();
+  // }
 
   logout() {
     this.auth.logout();
-    
   }
 
 
@@ -172,9 +171,3 @@ export class ProductsComponent implements OnInit {
 
 
 }
-
-
-
-
-
-

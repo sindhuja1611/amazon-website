@@ -67,6 +67,9 @@ export class UpdateComponent implements OnInit {
 
 
   }
+  logout() {
+    this.auth.logout();
+  }
 
 
   // register() {
@@ -114,13 +117,13 @@ export class UpdateComponent implements OnInit {
   updateDoc() {
 
     console.log(this);
-    id:String;
-    this.id=this.products[0].id;
-    let data={ 
-      "title":this.title,
-       
+    id: String;
+    this.id = this.products[0].id;
+    let data = {
+      "title": this.title,
+
     }
-    this.data.updateProduct(data,this.id);
+    this.data.updateProduct(data, this.id);
 
     // this.resetForm();
 

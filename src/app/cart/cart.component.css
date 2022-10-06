@@ -13,12 +13,13 @@
     width: 250px;
     margin: 20px 0px;
 }
-.hh{
+
+.hh {
     font-weight: 400;
     font-size: medium;
     font-family: 'Courier New', Courier, monospace;
     color: rgb(36, 23, 223);
-    
+
 }
 
 .center {
@@ -51,20 +52,24 @@
     padding: 10px 80px;
     border-radius: 2px !important;
 }
-.container{
+
+.container {
     background-color: rgb(29, 219, 219);
 }
-.card{
+
+.card {
     background-color: rgba(249, 224, 255, 0.931);
 }
-.qty{
-    width:4rem;
+
+.qty {
+    width: 4rem;
     text-align: center;
 }
 
-.card-title{
+.card-title {
     color: darkred;
 }
-.card-tile{
+
+.card-tile {
     color: rgb(8, 8, 8);
 }

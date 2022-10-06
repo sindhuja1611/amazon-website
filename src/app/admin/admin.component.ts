@@ -3,43 +3,42 @@ import { Product } from 'src/app/model/product';
 import { AuthService } from 'src/app/service/auth.service';
 import { DataService } from 'src/app/service/data.service';
 import { CartService } from 'src/app/service/cart.service';
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+  firstname: string = '';
 
   productsList: Product[] = [];
   productObj: Product = {
-    id:'',
+    id: '',
     pid: '',
     title: '',
-   
-    image:'',
+
+    image: '',
     category: '',
-   
-    price:0,
-    quantity:0,
-    
+
+    price: 0,
+    quantity: 0,
+
   };
   id: string = '';
   pid: string = '';
   title: string = '';
-  image:string='';
+  image: string = '';
   category: string = '';
-  price=0;
-  quantity=0;
+  price = 0;
+  quantity = 0;
 
-  constructor(private auth: AuthService, private data: DataService,private cartService : CartService) { }
-  public cartItemList : any =[]
+  constructor(private auth: AuthService, private data: DataService, private cartService: CartService) { }
+  public cartItemList: any = []
   ngOnInit(): void {
     this.getAllProducts();
   }
 
-  // register() {
-  //   this.auth.logout();
-  // }
 
   getAllProducts() {
 
@@ -57,24 +56,43 @@ export class AdminComponent implements OnInit {
 
   }
 
-   resetForm() {
+  resetForm() {
     this.id = '';
     this.pid = '';
     this.title = '';
     this.image = '';
-   
+
     this.category = '';
-   
-    this.price=0;
-    this.quantity=0;
-   }
+
+    this.price = 0;
+    this.quantity = 0;
+  }
 
   addProduct() {
     // if (this.first_name == '' || this.last_name == '' || this.mobile == '' || this.email == '') {
     //   alert('Fill all input fields');
     //   return;
     // }
+    
+    var letters = /^[A-Za-z]+$/;
+    
+   
+    if(this.pid=='')
+    {
+        alert('Please Enter Product Id');
+    }
+    else if(this.title='')
+    {
+        alert('Name field required ');
+    }
+   
 
+    else if(this.category='')
+    {
+        alert('category required ');
+    }
+    else
+    {
     this.productObj.id = "";
     this.productObj.pid = this.pid;
     this.productObj.title = this.title;
@@ -83,26 +101,27 @@ export class AdminComponent implements OnInit {
     this.productObj.price = this.price;
     this.productObj.quantity = this.quantity;
     this.data.addProduct(this.productObj);
-    
-    this.resetForm();
 
+    this.resetForm();
+    }
   }
 
- 
-   update(item: any){
-    
-   this.cartService.update(item);
-   alert("Do u want to update?");
+
+  update(item: any) {
+
+    this.cartService.update(item);
    
+
 
   }
 
   deleteProduct(item: Product) {
-    if (window.confirm('Are you sure you want to delete '+ ' ?')) {
+    if (window.confirm('Are you sure you want to delete ' + ' ?')) {
       this.data.deleteProduct(item);
     }
   }
-  logout(){
+  logout() {
     this.auth.logout();
   }
+  
 }

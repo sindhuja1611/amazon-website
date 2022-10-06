@@ -1,9 +1,10 @@
-import { isNgTemplate } from '@angular/compiler';
+
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { Title } from '@angular/platform-browser';
+
+
 import { getFirestore, doc, updateDoc } from "firebase/firestore";
+
 import { Product } from '../model/product';
 
 @Injectable({
@@ -11,7 +12,7 @@ import { Product } from '../model/product';
 })
 export class DataService {
 
-  constructor(private afs : AngularFirestore, private fireStorage : AngularFireStorage) { }
+  constructor(private afs : AngularFirestore) { }
 
 
   // get all students

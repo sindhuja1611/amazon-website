@@ -1,0 +1,47 @@
+
+
+.form-control {
+    border-radius: 3px;
+    width: 600px;
+    margin-left: 40px;
+}
+
+.search-icon {
+    position: absolute;
+    z-index: 10;
+    right:45%;
+    top: 15px;
+    color: rgb(255, 34, 0);
+}
+.pp{
+    color: rgb(37, 175, 44);
+    font-size: 20px;
+}
+p{
+    color:white;
+    font-size: 20px;
+
+}
+#b1{
+    min-height: auto;
+    min-width:80px ;
+        margin-right: 50px;
+     
+}
+#b2{
+    min-height: auto;
+    min-width:80px ;
+    margin-left: 50px;
+ 
+}
+
+
+
+.pl{
+    color:rgb(17, 161, 166);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100ch;
+    }
+

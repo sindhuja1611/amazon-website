@@ -13,7 +13,7 @@
 //   styleUrls: ['./description.component.css']
 // })
 // export class DescriptionComponent implements OnInit {
-    
+
 //   public products : any = [];
 //   public grandTotal !: number;
 //   public total !: number;
@@ -29,7 +29,7 @@
 //     .subscribe(res=>{
 //       this.products = res;
 //       console.log(res);
-      
+
 //     })
 
 //   }
@@ -42,7 +42,7 @@
 //     this.ItemList.push(...product);
 //     this.productList.next(product);
 //   }
- 
+
 
 //   // register() {
 //   //   this.auth.logout();
@@ -50,22 +50,23 @@
 
 
 
-  
+
 //   empty(){
 //     this.descriptionService.removeAll();
 //   }
 
 //     addtocart(item: any){
 //     this.cartService.addtoCart(item);
-    
+
 //   }
 
- 
+
 // }
-import { isNgTemplate } from '@angular/compiler';
+
 import { Component, OnInit } from '@angular/core';
 import { DescriptionService } from 'src/app/service/description.service';
 import { CartService } from 'src/app/service/cart.service';
+import { AuthService } from 'src/app/service/auth.service';
 import { ProductsComponent } from '../products/products.component';
 
 @Component({
@@ -75,55 +76,59 @@ import { ProductsComponent } from '../products/products.component';
 })
 export class DescriptionComponent implements OnInit {
 
-  public products : any = [];
+  public products: any = [];
   public grandTotal !: number;
   public total !: number;
+  public totalItem: number = 0;
 
-
-  constructor(private descriptionService : DescriptionService,private cartService : CartService) {}
+  constructor(private descriptionService: DescriptionService, private cartService: CartService, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.descriptionService.getProducts()
-    .subscribe(res=>{
-      this.products = res;
-      
-    })
+      .subscribe(res => {
+        this.products = res;
+        this.totalItem = res.length;
+
+      })
   }
- 
-   emptycart(){
+
+  emptycart() {
     this.descriptionService.removeAll();
   }
 
-      addtocart(item: any){
-        this.emptycart();
-        if (this.cartService.cartItemList.length === 0) {
- 
+  addtocart(item: any) {
+    this.emptycart();
+    if (this.cartService.cartItemList.length === 0) {
 
-          this.cartService.addtoCart(item);
-          alert("Item Successfully Added to cart")
-    
-        }
-        else {
-     
-    
-          const existsID = this.cartService.cartItemList.find((value:any) => (value.id === item.id))
-           if(existsID)
-          
-           {
-    
-            alert("Product Already Added.. Go To Cart...");
-    
-           }
-    else {
+
       this.cartService.addtoCart(item);
-      alert("Item Successfully Added to cart");
+      alert("Item Successfully Added to cart")
+
     }
-       
-    
-        }
-     
+    else {
+
+
+      const existsID = this.cartService.cartItemList.find((value: any) => (value.id === item.id))
+      if (existsID) {
+
+        alert("Product Already Added.. Go To Cart...");
+
       }
+      else {
+        this.cartService.addtoCart(item);
+        alert("Item Successfully Added to cart");
+      }
+
+
+    }
 
   }
 
-  
+
+  logout() {
+    this.auth.logout();
+  }
+
+}
+
+

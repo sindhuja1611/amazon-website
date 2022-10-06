@@ -1,14 +1,40 @@
 <header>
-    
-    <div id="navbar" class="nav navbar-dark bg-danger shadow-sm back fixed-top ">
+
+    <div id="navbar" class="nav navbar-dark bg-danger  shadow-sm back navbar-collapse fixed-top ">
         <div class="navbar-brand align-item-center d-flex">
             <i style="font-size: 40px;" class="fas fa-shipping-fast">
-                Amazon
+                Shoppiee
             </i>
+            <div class="navbar-brand align-item-center d-flex">
+                <strong style="font-size: 30px;text-align:center;color: rgb(228, 37, 11);">Welcome Admin!!</strong>
+
+            </div>
+            <div class="navbar-brand align-item-center d-flex">
+                <strong style="font-size: 20px;color: rgb(228, 37, 11);">Welcome Admin!!</strong>
+
+            </div>
+            <div class="navbar-brand align-item-center d-flex">
+                <strong style="font-size: 30px;text-align:center;color: rgb(228, 37, 11);">Welcome Admin!!</strong>
+
+            </div>
+
+        </div>
+        <div class="d-flex">
+            <ng-container *ngIf="true">
+
+
+
+
+
+                <button class="btn btn-success me-2" routerLink="/products" id="b1"> Website</button>
+
+
+                <button class="btn btn-warning me-2" (click)="logout()" id="b1"> LogOut</button>
+
+            </ng-container>
         </div>
     </div>
 </header>
-<br>
 <br>
 <br>
 <div class="container-fluid">
@@ -21,30 +47,31 @@
                 </div>
                 <div *ngFor="let item of products; let i = index">
                     <div class="form-floating mb-3">
-                       
-                        <input type="text" class="form-control" id="pid"  value={{item.pid}} >
+
+                        <input type="text" class="form-control" id="pid" value={{item.pid}}>
                         <label for="pid">Product Id:</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="title"  value={{item.title}} [(ngModel)]="title">
+                        <input type="text" class="form-control" id="title" value={{item.title}} [(ngModel)]="title">
                         <label for="title">Product Name</label>
                     </div>
-                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="image"  value={{item.image}} >
-                        <label for="image">Product URL:</label>
-                    </div> 
-                   
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="cat" value={{item.category}} >
+                        <input type="text" class="form-control" id="image" value={{item.image}}>
+                        <label for="image">Product URL:</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="cat" value={{item.category}}>
                         <label for="cat">Product Description</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="price" value={{item.price}} [(ngModel)]="price">
                         <label for="price">Price</label>
                     </div>
-                    
+
                     <button type="button" class="btn btn-outline-success" (click)="updateDoc()">Update Product</button>
-                    <button type="button" class="btn btn-outline-danger" routerLink="/admin" (click)="empty()">Go Back</button>
+                    <button type="button" class="btn btn-outline-danger" routerLink="/admin" (click)="empty()">Go
+                        Back</button>
                 </div>
             </div>
         </div>

@@ -1,0 +1,33 @@
+<header>
+
+  <div id="navbar" class="nav navbar-dark bg-danger  shadow-sm back navbar-collapse fixed-top ">
+    <div class="navbar-brand align-item-center d-flex">
+      <i style="font-size: 40px;" class="fas fa-shipping-fast">
+        Shoppiee
+      </i>
+      <strong style="font-size: 30px;"></strong>
+      <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="searchTerm" (keyup)="search($event)"
+          placeholder="search products">
+      </div>
+      <span class="fas fa-search search-icon"></span>
+
+
+    </div>
+    <div class="d-flex">
+      <ng-container *ngIf="true">
+
+        <button class="btn btn-info ms-5 me-2" routerLink="/cart" id="b2">
+          <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
+
+          <div style="font-size: 10px;" class="badge bg-danger">{{totalItem}}</div>
+        </button>
+        <button class="btn btn-warning ms-2" (click)="logout()" id="b1"> LogOut</button>
+
+        <p>{{user}}!! </p>
+      </ng-container>
+    </div>
+  </div>
+</header>
+<br><br>
+<br><br>

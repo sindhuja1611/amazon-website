@@ -64,7 +64,8 @@ body {
     font-weight: 300
 }
 
-input, textarea {
+input,
+textarea {
     padding: 10px 12px 10px 12px;
     border: 1px solid lightgrey;
     border-radius: 2px;
@@ -77,7 +78,8 @@ input, textarea {
     letter-spacing: 1px;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
@@ -102,9 +104,10 @@ a {
     width: 120px;
     color: #fff;
     border-radius: 2px;
-    
+
 }
-.btn-red{
+
+.btn-red {
     background-color: #3859e9;
     width: 120px;
     color: #fff;

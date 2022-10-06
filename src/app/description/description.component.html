@@ -1,81 +1,71 @@
-<header>
-    
-  <div id="navbar" class="nav navbar-dark bg-danger shadow-sm back fixed-top ">
-      <div class="navbar-brand align-item-center d-flex">
-          <i style="font-size: 40px;" class="fas fa-shipping-fast">
-              Amazon
-          </i>
-      </div>
-  </div>
-</header>
-<br>
-<br>
 <br>
 <div class="container">
   <div class="py-3 text-center">
     <img class="d-block mx-auto mb-4" src="../../assets/shop1.jpeg" alt="" width="200" height="72">
- 
+
   </div>
 
-  <table class="table table-responsive" border="none" bordercolor="red"> <tbody>
-    
-<div class="row">
-  <div class="col-md-1 order-md-2 mb-4">
-  </div> 
-  
-    <div class="col-md-5 order-md-2 mb-4">
-      <table class="table table-responsive" border="3" bordercolor="blue">
+  <table class="table table-responsive" border="none" bordercolor="red">
+    <tbody>
 
-      <tbody><p *ngFor="let item of products; let i = index">
-        
-        <img style="width:400px;" src="{{item.image}}" alt="">
-      </p>
-    
-      
-    </tbody></table>
-      </div>
+      <div class="row">
+        <div class="col-md-1 order-md-2 mb-4">
+        </div>
+
+        <div class="col-md-5 order-md-2 mb-4">
+          <table class="table table-responsive" border="3" bordercolor="blue">
+
+            <tbody>
+              <p *ngFor="let item of products; let i = index">
+
+                <img style="width:400px;" src="{{item.image}}" alt="">
+              </p>
 
 
-      <div class="col-md-5 order-md-2 mb-4">
-      <ng-container *ngIf="products.length !=0">
-        <div class="container">
-            <div class="card-table">
+            </tbody>
+          </table>
+        </div>
+
+
+        <div class="col-md-5 order-md-2 mb-4">
+          <ng-container *ngIf="products.length !=0">
+            <div class="container">
+              <div class="card-table">
                 <div class="cart-product">
                   <form class="form-control">
                     <table class="table table-responsive" border="3" bordercolor="blue">
-                        
-                        <tbody>
-                            <tr *ngFor="let item of products;let i=index" width="25%">
-                              <h2 align="center"> Product Details</h2> 
-                              
-                               <strong> Product Id:</strong> {{item.pid}}<br><br>
-                               <strong> Product Title:</strong> {{item.title}}<br><br>
-                               <strong> Product Category:</strong> {{item.category}}<br><br>
-                               <strong> Price:</strong> {{item.price}}<br><br>
-                              </tr>
-                             
-                        </tbody>
+
+                      <tbody>
+                        <tr *ngFor="let item of products;let i=index" width="25%">
+                          <h2 align="center"> Product Details</h2>
+
+                          <strong> Product Id:</strong> {{item.pid}}<br><br>
+                          <strong> Product Title:</strong> {{item.title}}<br><br>
+                          <strong> Product Category:</strong> {{item.category}}<br><br>
+                          <strong> Price:</strong> {{item.price}}<br><br>
+                        </tr>
+
+                      </tbody>
                     </table>
                     <div *ngFor="let item of products" width="25%">
-                      <button class="btn btn-success"  enabled (click)="addtocart(item)" routerLink="/cart">Add to Cart</button>  <i>...........</i>
+                      <button class="btn btn-success" enabled (click)="addtocart(item)" routerLink="/cart">Add to
+                        Cart</button> <i>...........</i>
                       <button class="btn btn-warning" routerLink="/products" (click)="emptycart()">Goback</button>
-                    </div> 
-                   
-                 
+                    </div>
+
+
                   </form>
-                    
+
                 </div>
+              </div>
             </div>
+          </ng-container>
         </div>
-    </ng-container>
-  </div>
 
-  <div class="col-md-1 order-md-2 mb-4">
-  </div> 
- 
-   
-</div>
-</tbody>
+        <div class="col-md-1 order-md-2 mb-4">
+        </div>
+
+
+      </div>
+    </tbody>
   </table>
-
-

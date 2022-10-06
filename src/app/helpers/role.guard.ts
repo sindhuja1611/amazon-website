@@ -7,24 +7,22 @@ import { user } from '@angular/fire/auth';
   providedIn: 'root'
 })
 export class RoleGuard implements CanActivate {
-  constructor(private router : Router) { }
-  canActivate(){
-let role=localStorage.getItem('user');
+  constructor(private router: Router) { }
+  canActivate() {
+    let role = localStorage.getItem('user');
 
-if(role=="admin" || role=="update")
-{
-    return true;
- }
+    if (role == "admin" || role == "update") {
+      return true;
+    }
 
-   
- 
 
-else
-{
-  alert("admin usage");
-this.router.navigate(['user-login']);
-return false;
-}
-}
-  
+
+
+    else {
+      alert("admin usage");
+      this.router.navigate(['user-login']);
+      return false;
+    }
+  }
+
 }

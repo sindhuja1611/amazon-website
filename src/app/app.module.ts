@@ -19,15 +19,18 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { RegisterComponent } from './register/register.component';
-import {AuthService} from 'src/app/service/auth.service';
+
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AdminComponent } from './admin/admin.component';
 import { VisitComponent } from './visit/visit.component';
 import { UpdateComponent } from './update/update.component';
-import { FilterPipe } from './filter.pipe';
-import { FormGroup, FormBuilder, Validators, FormControl, NgForm } from '@angular/forms';
+import { FilterPipe } from './pipes/filter.pipe';
+
+import { TitlebarComponent } from './titlebar/titlebar.component';
+import { FooterComponent } from './footer/footer.component';
+
 
 
 @NgModule({
@@ -44,7 +47,9 @@ import { FormGroup, FormBuilder, Validators, FormControl, NgForm } from '@angula
     AdminComponent,
     VisitComponent,
     UpdateComponent,
-    FilterPipe
+    FilterPipe,
+    TitlebarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +64,8 @@ import { FormGroup, FormBuilder, Validators, FormControl, NgForm } from '@angula
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+
   ],
   providers: [],
   bootstrap: [AppComponent]
