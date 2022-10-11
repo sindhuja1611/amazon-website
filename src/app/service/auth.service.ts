@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { GoogleAuthProvider} from '@angular/fire/auth'
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/service/cart.service';
 
 @Injectable({
@@ -13,21 +13,19 @@ export class AuthService {
   
   public usr !: any;
 
-  constructor(private fireauth : AngularFireAuth, private router : Router,private cartService: CartService) { }
+  constructor(private fireauth : AngularFireAuth, private router : Router,private cartService: CartService, private toastr: ToastrService) { }
 
   // login method
   login(email : string, password : string) {
     this.fireauth.signInWithEmailAndPassword(email,password).then( res => {
       this.usr = res.user?.email;
-      console.log(this.usr);
-
+    
       localStorage.setItem('user', JSON.stringify(res.user))
-      
-
+     
     }, err => {
-      alert("To Login, Kindly Register..")
-        this.router.navigate(['/user-login']);
-    })
+      alert(err.message);
+      this.router.navigate(['/login']);
+  })
   }
 
   // register method
@@ -35,7 +33,7 @@ export class AuthService {
     this.fireauth.createUserWithEmailAndPassword(email, password).then( res => {
       this.isLoggedIn=true
       localStorage.setItem('user',JSON.stringify(res.user))
-      alert('Registration Successful');
+      this.toastr.success('Registration Successful');
     
       this.router.navigate(['/user-login']);
     }, err => {

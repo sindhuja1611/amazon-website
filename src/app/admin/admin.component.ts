@@ -3,7 +3,7 @@ import { Product } from 'src/app/model/product';
 import { AuthService } from 'src/app/service/auth.service';
 import { DataService } from 'src/app/service/data.service';
 import { CartService } from 'src/app/service/cart.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -33,7 +33,7 @@ export class AdminComponent implements OnInit {
   price = 0;
   quantity = 0;
 
-  constructor(private auth: AuthService, private data: DataService, private cartService: CartService) { }
+  constructor(private auth: AuthService, private data: DataService, private cartService: CartService, private toastr: ToastrService) { }
   public cartItemList: any = []
   ngOnInit(): void {
     this.getAllProducts();
@@ -76,20 +76,41 @@ export class AdminComponent implements OnInit {
     
     var letters = /^[A-Za-z]+$/;
     
-   
-    if(this.pid=='')
+    
+    if(this.pid== '') 
     {
-        alert('Please Enter Product Id');
+      this.toastr.warning('Product Id Empty');
     }
-    else if(this.title='')
+  
+    else if(this.title== '') 
     {
-        alert('Name field required ');
+      this.toastr.warning('Product Name Please');
     }
-   
-
-    else if(this.category='')
+    else if(!letters.test(this.title)) 
     {
-        alert('category required ');
+      this.toastr.warning('Product Name requires only alphabets');
+      this.title='';
+    }
+    else if(this.image== '') 
+    {
+      this.toastr.warning('Image field Empty!');
+    }
+    else if(this.category== '') 
+    {
+      this.toastr.warning('Description field Empty!');
+    }
+    else if(!letters.test(this.category)) 
+    {
+      this.toastr.warning('Description requires only alphabets');
+      this.category='';
+    }
+    else if(this.price== 0) 
+    {
+      this.toastr.warning('Price field Empty!');
+    }
+    else if(this.quantity== 0) 
+    {
+      this.toastr.warning('Quantity field Empty!');
     }
     else
     {
@@ -101,7 +122,7 @@ export class AdminComponent implements OnInit {
     this.productObj.price = this.price;
     this.productObj.quantity = this.quantity;
     this.data.addProduct(this.productObj);
-
+    this.toastr.success('Product Added Successfully');
     this.resetForm();
     }
   }

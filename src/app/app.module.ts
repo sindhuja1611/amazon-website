@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ProductsComponent } from './products/products.component';
 import { HttpClientModule } from '@angular/common/http';
-import { CartComponent } from './cart/cart.component';
+import { CartComponent } from './superadmin/cart/cart.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DescriptionComponent } from './description/description.component';
@@ -30,26 +30,33 @@ import { FilterPipe } from './pipes/filter.pipe';
 
 import { TitlebarComponent } from './titlebar/titlebar.component';
 import { FooterComponent } from './footer/footer.component';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ToastrModule } from 'ngx-toastr';
+import { PipeModule } from './pipes/pipe.module';
+import { LayoutComponent } from './layout/layout.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ProductsComponent,
-    CartComponent,
-    NavigationComponent,
+    //ProductsComponent,
+    //CartComponent,
+   NavigationComponent,
     
-    DescriptionComponent,
+    //DescriptionComponent,
     UserLoginComponent,
     RegisterComponent,
     AdminComponent,
-    VisitComponent,
+    //VisitComponent,
     UpdateComponent,
-    FilterPipe,
+    
     TitlebarComponent,
-    FooterComponent
+    FooterComponent,
+    LayoutComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -62,12 +69,19 @@ import { FooterComponent } from './footer/footer.component';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     ReactiveFormsModule,
+    PipeModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
 
+    CommonModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
+
   ],
   providers: [],
+  exports:
+ [   ],
   bootstrap: [AppComponent]
   
 })

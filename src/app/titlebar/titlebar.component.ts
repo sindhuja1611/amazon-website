@@ -88,7 +88,7 @@ export class TitlebarComponent implements OnInit {
 
         });
         this.productList = this.filterCategory;
-        console.log(this.productList);
+    
 
 
 

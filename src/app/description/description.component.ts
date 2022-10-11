@@ -67,7 +67,7 @@ import { Component, OnInit } from '@angular/core';
 import { DescriptionService } from 'src/app/service/description.service';
 import { CartService } from 'src/app/service/cart.service';
 import { AuthService } from 'src/app/service/auth.service';
-import { ProductsComponent } from '../products/products.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-description',
@@ -81,7 +81,7 @@ export class DescriptionComponent implements OnInit {
   public total !: number;
   public totalItem: number = 0;
 
-  constructor(private descriptionService: DescriptionService, private cartService: CartService, private auth: AuthService) { }
+  constructor(private descriptionService: DescriptionService, private cartService: CartService, private auth: AuthService,private toastr: ToastrService,) { }
 
   ngOnInit(): void {
     this.descriptionService.getProducts()
@@ -102,7 +102,7 @@ export class DescriptionComponent implements OnInit {
 
 
       this.cartService.addtoCart(item);
-      alert("Item Successfully Added to cart")
+      this.toastr.success("Item Successfully Added to cart")
 
     }
     else {
@@ -111,12 +111,12 @@ export class DescriptionComponent implements OnInit {
       const existsID = this.cartService.cartItemList.find((value: any) => (value.id === item.id))
       if (existsID) {
 
-        alert("Product Already Added.. Go To Cart...");
+        this.toastr.success("Product Already Added.. Go To Cart...");
 
       }
       else {
         this.cartService.addtoCart(item);
-        alert("Item Successfully Added to cart");
+        this.toastr.success("Item Successfully Added to cart");
       }
 
 

@@ -1,13 +1,24 @@
-import { Component, NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from '../admin/admin.component';
-const routes: Routes = [
+import { CommonModule } from '@angular/common';
+import {  NgModule } from '@angular/core';
 
-    {path:'admin', component: AdminComponent},
-];
+
+import { CartComponent } from './cart/cart.component';
+import { SuperadminRoutingModule } from './superadmin-routing.module';
+
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  declarations:[
+CartComponent
+  ],
+  imports: [CommonModule,SuperadminRoutingModule],
+  
 })
-export class SuperadminModule { }
+export class SuperadminModule { 
+  constructor(){
+    console.log("CartAdmin Works!!");
+  }
+}
+
+
+
+    

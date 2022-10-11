@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
+
+
+
 @Component({
   selector: 'app-visit',
   templateUrl: './visit.component.html',
@@ -13,6 +16,8 @@ export class VisitComponent implements OnInit {
   }
 
   logout() {
+   
     this.auth.logout();
+    
   }
 }

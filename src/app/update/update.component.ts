@@ -121,17 +121,17 @@ export class UpdateComponent implements OnInit {
     this.id = this.products[0].id;
     let data = {
       "title": this.title,
-
+      "price": this.price
     }
     this.data.updateProduct(data, this.id);
 
-    // this.resetForm();
+     this.router.navigate(['/admin']);
 
 
 
   }
 
-  empty() {
+  emptycart() {
     this.descriptionService.removeAll();
   }
 

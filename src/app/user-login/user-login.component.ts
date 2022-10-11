@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { ToastrService } from 'ngx-toastr';
+
+
 @Component({
   selector: 'app-user-login',
   templateUrl: './user-login.component.html',
@@ -16,7 +19,7 @@ export class UserLoginComponent implements OnInit {
   public usr !: any;
 
 
-  constructor(private auth: AuthService, private fireauth: AngularFireAuth, private router: Router) { }
+  constructor(private auth: AuthService, private fireauth: AngularFireAuth, private router: Router,private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -26,50 +29,56 @@ export class UserLoginComponent implements OnInit {
     var letters = /^[A-Za-z]+$/;
     var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     if (this.email == '') {
-      alert('Please enter email');
+      this.toastr.warning('Please enter email');
       return;
     }
 
    
     else if (this.email == '') {
-      alert('Please enter your user email id');
+      this.toastr.warning('Please enter your user email id');
     }
     else if (!filter.test(this.email)) {
-      alert('Invalid email');
+      this.toastr.warning('Invalid email');
       this.email='';
     }
     else if (this.password == '') {
-      alert('Please enter password');
+      this.toastr.warning('Please enter password');
       return;
     }
 
     else if ((this.email == "admin@10decoders.in") && (this.password == "admin10d")) {
-      alert("welcome Admin");
+  
       this.email = "admin@10decoders.in";
       this.password = "admin10d"
       localStorage.setItem('user', 'admin')
       this.auth.login(this.email, this.password);
-
-      this.router.navigate(['header']);
-
+      this.toastr.success('Welcome Admin');
+      this.router.navigate(['/header']);
+       console.log("welcome");
     }
 
     else {
       this.fireauth.signInWithEmailAndPassword(this.email, this.password).then(res => {
-        this.isLoggedIn = true
+     
 
 
         this.usr = res.user?.email;
-        console.log(this.usr);
-
+     
         localStorage.setItem('user', JSON.stringify(res.user))
-        alert("login successful");
+        this.toastr.success('Login Successfully');
+        
         this.router.navigate(['/products']);
 
+        
 
 
 
-      })
+      }, err => {
+        this.toastr.warning("To Login Kindly Register");
+        this.router.navigate(['/user-login']);
+        this.email='';
+        this.password='';
+    })
 
 
     }

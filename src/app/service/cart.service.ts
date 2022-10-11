@@ -10,7 +10,8 @@ export class CartService {
   public cartItemList : any =[]
   public productList = new BehaviorSubject<any>([]);
   public search = new BehaviorSubject<string>("");
-
+  public token = new BehaviorSubject<string>("");
+  
   constructor() { }
   getProducts(){
     return this.productList.asObservable();
@@ -41,7 +42,7 @@ export class CartService {
 
   }
 update(product : any){
-    
+    this.cartItemList=[];
     this.cartItemList.push(product);
     
     this.productList.next(this.cartItemList);

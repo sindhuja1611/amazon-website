@@ -7,9 +7,8 @@ import { DataService } from 'src/app/service/data.service';
 import { CartService } from 'src/app/service/cart.service';
 import { DescriptionService } from 'src/app/service/description.service';
 
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -24,7 +23,8 @@ export class ProductsComponent implements OnInit {
   public totalItem: number = 0;
   public filterCategory: any
   searchKey: string = "";
-  public user: string = "";
+   user: string = "";
+   public usr:string="";
   public searchTerm !: string;
   productsList: Product[] = [];
   public productList: any;
@@ -47,12 +47,17 @@ export class ProductsComponent implements OnInit {
   price = 0;
   quantity = 0;
 
-  constructor(private router:Router,private auth: AuthService, private fireauth: AngularFireAuth, private data: DataService, private cartService: CartService, private descriptionService: DescriptionService) { 
+  constructor(private router:Router,private auth: AuthService, private toastr: ToastrService, private data: DataService, private cartService: CartService, private descriptionService: DescriptionService) {
+    this.cartService.token.subscribe((val: any) => {
+      this.user = val;
+      console.log(this.user);
+    })
+
 
     let currentUser = JSON.parse(localStorage.getItem("user") || '');
     console.log("user details", currentUser.email);
 
-    this.user = currentUser.email;
+    this.usr = this.user
    this.router.navigate(['/products']);
   }
 
@@ -64,9 +69,9 @@ export class ProductsComponent implements OnInit {
     this.cartService.getProducts()
       .subscribe(res => {
         this.totalItem = res.length;
-
-
+        
       })
+      
 
 
     this.getAllProducts();
@@ -90,7 +95,7 @@ export class ProductsComponent implements OnInit {
 
         });
         this.productList = this.filterCategory;
-        console.log(this.productList);
+ 
 
 
 
@@ -134,7 +139,7 @@ export class ProductsComponent implements OnInit {
 
 
       this.cartService.addtoCart(item);
-      alert("Item Successfully Added to cart")
+      this.toastr.success('Item Successfully Added to Cart');
 
     }
     else {
@@ -143,13 +148,13 @@ export class ProductsComponent implements OnInit {
       const existsID = this.cartService.cartItemList.find((value: any) => (value.id === item.id))
       if (existsID) {
 
-        alert("Product Already Added");
+        this.toastr.warning('Product Already Added Go to Cart');
 
 
       }
       else {
         this.cartService.addtoCart(item);
-        alert("Item Successfully Added to cart");
+        this.toastr.success('Item Successfully Added to Cart');
       }
 
 

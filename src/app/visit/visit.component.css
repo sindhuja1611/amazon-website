@@ -10,3 +10,4 @@ color:blueviolet;
  #hh{
     color:rgb(211, 50, 21);
      }
+     @import '~ngx-toastr/toastr-bs4-alert';

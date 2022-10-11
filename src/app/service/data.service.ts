@@ -1,10 +1,11 @@
 
 import { Injectable } from '@angular/core';
+import { resetFakeAsyncZone } from '@angular/core/testing';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
 import { getFirestore, doc, updateDoc } from "firebase/firestore";
-
+import { ToastrService } from 'ngx-toastr';
 import { Product } from '../model/product';
 
 @Injectable({
@@ -12,7 +13,7 @@ import { Product } from '../model/product';
 })
 export class DataService {
 
-  constructor(private afs : AngularFirestore) { }
+  constructor(private afs : AngularFirestore, private toastr: ToastrService) { }
 
 
   // get all students
@@ -45,7 +46,8 @@ const docRef = doc(db,"Students",id);
 updateDoc(docRef, item)
 .then(docRef => {
     console.log("A New Document Field has been added to an existing document");
-    alert("updated");
+    this.toastr.success('Updated Successfully ');
+   
 })
 .catch(error => {
     console.log(error);

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
   password: string = '';
   uname: string = '';
   mob: string = '';
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -26,37 +26,37 @@ export class RegisterComponent implements OnInit {
 
     if(this.uname == '') 
     {
-      alert('Please Enter UserName');
+      this.toastr.warning('User Name Please');
     }
     else if(!letters.test(this.uname)) 
     {
-      alert('User name field required only alphabet characters');
+      this.toastr.warning('UserName requires only alphabets');
       this.uname='';
     }
     else if (this.mob == '') 
     {
-      alert('Please Enter Mobile Number');
+      this.toastr.warning('Mobile Field Empty');
     }
     else if (!mob.test(this.mob))
      {
 
-      alert('Mobile field required only Numbers');
+      this.toastr.warning('Mobile field required only Numbers');
       this.mob='';
     }
     else if (this.email == '') 
     {
-      alert('Please enter email');
+      this.toastr.warning('Please enter email');
       
     }
 
     else if (!filter.test(this.email))
      {
-      alert('Invalid email');
+      this.toastr.warning('Invalid email');
       this.email = '';
     }
     else if (this.password == '') 
     {
-      alert('Please enter password');
+      this.toastr.warning('Please enter password');
       return;
     }
     else {
